@@ -138,7 +138,7 @@ function isValidHttpUrl(string) {
 
 function NewFactForm({ setFacts, setShowForm }){
   const [text, setText] = useState('');
-  const [source, setSource] = useState('http://example.com');
+  const [source, setSource] = useState('');
   const [category, setCategory] = useState('');
   const [isUploading, setIsUploading] = useState(false);
   const textLength = text.length;
@@ -149,18 +149,7 @@ function NewFactForm({ setFacts, setShowForm }){
 
     // 2. Check if data is valid.
     if(text && isValidHttpUrl(source) && category && textLength <= 200) {
-      // 3. Create a new fact object
-      // const newFact = {
-      //   id: Math.round(Math.random() * 1000000),
-      //   text: text,
-      //   source: source,
-      //   category: category,
-      //   votesInteresting: 0,
-      //   votesMindblowing: 0,
-      //   votesFalse: 0,
-      //   createdIn: new Date().getFullYear(),
-      // }
-      // 3. Upload fact to Supabase and receive the new fact object
+      
       setIsUploading(true);
       const { data: newFact, error } = await supabase
         .from('facts')
